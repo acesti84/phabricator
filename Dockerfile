@@ -23,8 +23,9 @@ RUN apt-get -y install php-pear
 
 RUN a2enmod rewrite
 
-RUN mkdir -p /installazione
+RUN mkdir -m777 -p /installazione
 WORKDIR /installazione
+USER www-root
 RUN git clone https://github.com/phacility/libphutil.git
 RUN git clone https://github.com/phacility/arcanist.git
 RUN git clone https://github.com/phacility/phabricator.git
