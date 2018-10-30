@@ -21,7 +21,7 @@ RUN apt-get -y install php-mbstring
 RUN apt-get -y install libpcre3-dev
 RUN apt-get -y install php-pear
 RUN apt-get -y install python-pygments
-RUN apt-get -y install subversione
+RUN apt-get -y install subversion
 
 #install imagemagic
 WORKDIR /installazione
