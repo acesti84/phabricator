@@ -22,6 +22,7 @@ RUN apt-get -y install libpcre3-dev
 RUN apt-get -y install php-pear
 RUN apt-get -y install python-pygments
 RUN apt-get -y install subversion
+RUN apt-get -y install mercurial
 
 #install imagemagic
 WORKDIR /installazione
@@ -37,8 +38,8 @@ RUN a2enmod rewrite
 
 RUN mkdir -m777 -p /installazione
 
-USER www-data
 WORKDIR /installazione
 RUN git clone https://github.com/phacility/libphutil.git
 RUN git clone https://github.com/phacility/arcanist.git
 RUN git clone https://github.com/phacility/phabricator.git
+RUN chown -R www-data:www-data /installazione
