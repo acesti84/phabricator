@@ -20,6 +20,18 @@ RUN apt-get -y install php-json
 RUN apt-get -y install php-mbstring
 RUN apt-get -y install libpcre3-dev
 RUN apt-get -y install php-pear
+RUN apt-get -y install python-pygments
+RUN apt-get -y install subversione
+
+#install imagemagic
+WORKDIR /installazione
+RUN wget https://www.imagemagick.org/download/ImageMagick-7.0.8-14.tar.gz 
+RUN tar xf ImageMagick-7.0.8-14.tar.gz
+WORKDIR /installazione/ImageMagick-7.0.8-14
+RUN ./configure
+RUN make
+RUN make install
+RUN ldconfig /usr/local/lib
 
 RUN a2enmod rewrite
 
