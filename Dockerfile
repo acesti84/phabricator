@@ -23,6 +23,9 @@ RUN apt-get -y install php-pear
 RUN apt-get -y install python-pygments
 RUN apt-get -y install subversion
 RUN apt-get -y install mercurial
+RUN apt-get -y install p7zip-full
+RUN apt-get -y install sudo
+RUN apt-get -y install openssh-server
 
 #install imagemagic
 WORKDIR /installazione
@@ -43,3 +46,13 @@ RUN git clone https://github.com/phacility/libphutil.git
 RUN git clone https://github.com/phacility/arcanist.git
 RUN git clone https://github.com/phacility/phabricator.git
 RUN chown -R www-data:www-data /installazione
+
+# imposto branch "stable"
+WORKDIR /installazione/phabricator
+RUN git checkout stable 
+
+WORKDIR /installazione/arcanist
+RUN git checkout stable 
+
+WORKDIR /installazione/libphutil
+RUN git checkout stable 
